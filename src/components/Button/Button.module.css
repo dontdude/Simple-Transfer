@@ -7,14 +7,12 @@
   transition:
     background-color var(--transition-speed) ease,
     transform 0.1s ease;
-
   font-family: var(--font-family-sans);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   text-align: center;
   text-decoration: none;
   line-height: 1.5;
-
   background-color: var(--color-primary);
   color: var(--color-surface);
 }

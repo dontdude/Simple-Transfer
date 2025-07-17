@@ -1,5 +1,6 @@
 import { Component } from "react";
 import type { ReactNode, ErrorInfo } from "react";
+import { Button } from "../../components/Button/Button";
 import styles from "./ErrorBoundary.module.css";
 
 interface Props {
@@ -38,9 +39,7 @@ class ErrorBoundary extends Component<Props, State> {
             We're sorry for the inconvenience. Please return to the homepage to
             continue.
           </p>
-          <button className={styles.button} onClick={this.handleGoHome}>
-            Go to Homepage
-          </button>
+          <Button onClick={this.handleGoHome}>Go to Homepage</Button>
         </div>
       );
     }

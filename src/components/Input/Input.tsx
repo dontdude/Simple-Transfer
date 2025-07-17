@@ -9,8 +9,8 @@ interface InputProps {
   type?: string;
   placeholder?: string;
   required?: boolean;
-  className?: string; // For custom wrapper styling
-  error?: boolean; // To toggle error styles
+  className?: string;
+  error?: boolean;
 }
 
 export const Input = ({
