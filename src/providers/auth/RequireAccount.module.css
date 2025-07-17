@@ -1,0 +1,13 @@
+.promptContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+}
+
+.promptContainer p {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+}

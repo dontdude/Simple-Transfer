@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
 import { useAccountStore } from "../../store/account.store";
 import { getAccountBalance } from "../../api/transferService";
 import type { GetBalanceResponse } from "../../types/api.types";
@@ -7,6 +6,7 @@ import { showError } from "../../hooks/useToast";
 import { Card } from "../../components/Card/Card";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { Button } from "../../components/Button/Button";
+import { RequireAccount } from "../../providers/auth/RequireAccount"; // Import the guard
 import { BalanceDisplay } from "./components/BalanceDisplay";
 import styles from "./ViewBalancePage.module.css";
 
@@ -58,17 +58,6 @@ export const ViewBalancePage = () => {
       );
     }
 
-    if (!accountId) {
-      return (
-        <div className={styles.centeredMessage}>
-          <p>Please create an account first to view your balance.</p>
-          <Link to="/">
-            <Button>Create Account</Button>
-          </Link>
-        </div>
-      );
-    }
-
     if (balanceData) {
       return (
         <Card>
@@ -84,11 +73,13 @@ export const ViewBalancePage = () => {
   };
 
   return (
-    <div className="container">
-      <header className={styles.header}>
-        <h1>Account Balance</h1>
-      </header>
-      <div className={styles.contentArea}>{renderContent()}</div>
-    </div>
+    <RequireAccount>
+      <div className="container">
+        <header className={styles.header}>
+          <h1>Account Balance</h1>
+        </header>
+        <div className={styles.contentArea}>{renderContent()}</div>
+      </div>
+    </RequireAccount>
   );
 };

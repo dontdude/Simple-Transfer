@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
-import { Toast } from "../../components/Toast/Toast";
+import { Toast } from "../../providers/notifications/Toast";
 import styles from "./AppLayout.module.css";
 
 export const AppLayout = () => {
