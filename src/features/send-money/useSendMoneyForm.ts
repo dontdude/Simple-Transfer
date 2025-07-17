@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { isAxiosError } from 'axios';
+import { handleApiError } from '../../utils/handleApiError';
 import { useAccountStore } from '../../store/account.store';
 import { sendMoney } from '../../api/transferService';
 import type { TransferResponse } from '../../types/api.types';
-import { showSuccess, showError } from '../../hooks/useToast';
+import { showSuccess } from '../../hooks/useToast';
 
 const initialState = {
     destinationAccountId: '',
@@ -65,18 +65,7 @@ export const useSendMoneyForm = () => {
             setLastTransaction(response || payload);
             setFormData(initialState);
         } catch (err) {
-            let errorMessage = 'Transaction failed. Please check details and try again.';
-
-            if (isAxiosError(err) && err.response?.data) {
-                const responseData = err.response.data;
-                errorMessage = typeof responseData === 'string'
-                    ? responseData
-                    : responseData.message || errorMessage;
-            } else {
-                errorMessage = 'An unexpected network error occurred. Please check your connection.';
-            }
-
-            showError(errorMessage);
+            handleApiError(err, "Transaction failed. Please check details and try again.");
             console.error(err);
         } finally {
             setIsLoading(false);

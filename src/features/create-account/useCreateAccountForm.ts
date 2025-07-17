@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { isAxiosError } from 'axios';
+import { handleApiError } from '../../utils/handleApiError';
 import { useAccountStore } from '../../store/account.store';
 import { createAccount } from '../../api/transferService';
-import { showSuccess, showError } from '../../hooks/useToast';
+import { showSuccess } from '../../hooks/useToast';
 
 const initialState = {
     accountId: '',
@@ -57,18 +57,7 @@ export const useCreateAccountForm = () => {
             setAccountIdInStore(response.account_id);
             setFormData(initialState);
         } catch (err) {
-            let errorMessage = 'Failed to create account.';
-
-            if (isAxiosError(err) && err.response?.data) {
-                const responseData = err.response.data;
-                errorMessage = typeof responseData === 'string'
-                    ? responseData
-                    : responseData.message || errorMessage;
-            } else {
-                errorMessage = 'An unexpected network error occurred. Please check your connection.';
-            }
-
-            showError(errorMessage);
+            handleApiError(err, 'Failed to create account.');
             console.error(err);
         } finally {
             setIsLoading(false);
