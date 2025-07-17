@@ -53,7 +53,7 @@ export const useCreateAccountForm = () => {
             };
 
             const response = await createAccount(payload);
-            showSuccess(`Account #${response.account_id} created successfully!`);
+            showSuccess(`Account ${response.account_id} created successfully!`);
             setAccountIdInStore(response.account_id);
             setFormData(initialState);
         } catch (err) {

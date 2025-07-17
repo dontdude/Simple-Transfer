@@ -1,15 +1,13 @@
 .btn {
-  /* --- Layout & Box Model --- */
   display: inline-block;
   padding: var(--spacing-3) var(--spacing-6);
-  border: 1px solid transparent;
+  border: var(--border-width-base) solid transparent;
   border-radius: var(--border-radius-md);
   cursor: pointer;
   transition:
-    background-color 0.2s ease,
+    background-color var(--transition-speed) ease,
     transform 0.1s ease;
 
-  /* --- Typography --- */
   font-family: var(--font-family-sans);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
@@ -17,7 +15,6 @@
   text-decoration: none;
   line-height: 1.5;
 
-  /* --- Color & Theme --- */
   background-color: var(--color-primary);
   color: var(--color-surface);
 }

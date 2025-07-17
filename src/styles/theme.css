@@ -10,6 +10,7 @@
   --color-surface: #ffffff;
   --color-border: #e0e0e0;
   --color-focus-outline: #0a68f54d;
+  --color-error-bg: #fdeeee;
 
   /* Typography */
   --font-family-sans:
@@ -18,9 +19,15 @@
   --font-family-mono:
     "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 
+  /* New Typographic Scale */
   --font-size-base: 16px; /* 1rem */
-  --font-size-sm: 14px;
-  --font-weight-light: 300;
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-h2: 1.5rem; /* 24px */
+  --font-size-h1: 2.5rem; /* 40px */
+
   --font-weight-normal: 400;
   --font-weight-bold: 700;
 
@@ -34,6 +41,10 @@
   --spacing-8: 2rem;
 
   /* Layout & Borders */
+  --border-width-base: 1px;
+  --border-width-sm: 2px;
+  --border-width-md: 3px;
+  --border-width-lg: 4px;
   --border-radius-sm: 0.25rem;
   --border-radius-md: 0.5rem;
   --box-shadow:
@@ -48,8 +59,13 @@
 
   /* --- Layout Dimensions --- */
   --max-width-container: 1140px;
-  --navbar-height: 64px; /* New */
+  --navbar-height: 64px;
+  --input-height: 44px;
+
+  /* --- Breakpoints --- */
+  --breakpoint-md: 768px;
 
   /* --- Transitions --- */
-  --transition-speed: 0.2s; /* New */
+  --transition-speed: 0.2s;
+  --transition-speed-slow: 0.8s;
 }
