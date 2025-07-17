@@ -1,0 +1,56 @@
+@import "./theme.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+*:focus-visible {
+  outline: 3px solid var(--color-focus-outline);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+.input-error {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.error-message {
+  color: var(--color-error);
+  font-size: 0.875em;
+  margin-top: var(--spacing-2);
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-6);
+  padding-right: var(--spacing-6);
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: var(--font-size-sm);
+  }
+
+  .container {
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
+  }
+}
