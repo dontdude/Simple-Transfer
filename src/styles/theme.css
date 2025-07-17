@@ -62,11 +62,6 @@
   --navbar-height: 64px;
   --input-height: 44px;
 
-  /* --- Breakpoints --- */
-  --breakpoint-sm: 600px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-
   /* --- Transitions --- */
   --transition-speed: 0.2s;
   --transition-speed-slow: 0.8s;

@@ -7,6 +7,5 @@ export const useAccountStore = create<AccountStore>((set) => ({
 
     // Actions
     setAccountId: (id: number) => set({ accountId: id }),
-
     clearAccount: () => set({ accountId: null }),
 }));

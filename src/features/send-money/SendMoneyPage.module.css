@@ -65,4 +65,5 @@
 .summaryAmount {
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-xl);
+  overflow-x: auto;
 }

@@ -47,7 +47,7 @@
   padding: var(--spacing-2) var(--spacing-4);
 }
 
-@media (max-width: var(--breakpoint-lg)) {
+@media (max-width: 786px) {
   .promptContainer {
     flex-direction: column;
   }

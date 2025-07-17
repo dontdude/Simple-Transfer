@@ -52,9 +52,10 @@
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-h2);
   color: var(--color-success);
+  overflow-x: auto;
 }
 
-@media (max-width: var(--breakpoint-md)) {
+@media (max-width: 786px) {
   .header {
     flex-direction: column;
     align-items: flex-start;

@@ -44,7 +44,7 @@ body {
   padding-right: var(--spacing-6);
 }
 
-@media (max-width: var(--breakpoint-sm)) {
+@media (max-width: 786px) {
   body {
     font-size: var(--font-size-sm);
   }
