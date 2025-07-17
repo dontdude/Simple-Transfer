@@ -1,69 +1,87 @@
-# React + TypeScript + Vite
+# Simple Transfer Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a frontend web application for demonstrating internal financial account transfers. It allows users to create accounts, view balances, and transfer funds between them.
 
-Currently, two official plugins are available:
+The application is built with React, andd TypeScript, focusing on a clean user experience, modern development practices, and maintainability.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+***
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+*   **Create Accounts:** Users can create new accounts with a unique ID and an initial balance.
+*   **View Balance:** Check the current balance of any existing account.
+*   **Transfer Funds:** Initiate fund transfers between two accounts.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Technical Stack & Decisions
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+**Framework:**  
+React (via Vite) – Lightweight, modular, and developer-friendly setup for rapid development.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Language:**  
+TypeScript – Ensures type safety, developer tooling, and long-term maintainability.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Styling:**  
+CSS Modules + Global CSS Variables – Combines component-scoped styles with a consistent global design system.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**State Management:**  
+- **Zustand** – Lightweight global store to persist shared data like the active account ID.
+- **React useState & Custom Hooks** – Used for form states, input handling, and API call logic within individual components.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Routing:**  
+React Router v6 – Enables clean SPA-style navigation with dynamic route management.
+
+**API Integration:**  
+Axios – Abstracted into `axiosInstance.ts` and reusable `transferService.ts` for centralized, type-safe API calls.
+
+**Notifications:**  
+React Hot Toast – Offers customizable toast messages for success and error feedback. Wrapped in a `notifications/Toast.tsx` provider for global access.
+
+**Component Design Philosophy:**  
+- **`components/`** – Pure, reusable UI elements like `<Button />`, `<Input />`, `<Card />`, and `<Spinner />`.
+- **`features/`** – Each route encapsulates business logic, styles, and any local components specific to that feature (e.g., `useCreateAccountForm.ts`).
+- **`layout/`** – Controls page structure and navigation via components like `<AppLayout />` and `<Navbar />`.
+- **`providers/`** – Logical boundary wrappers like `RequireAccount.tsx` for route-level access control and `Toast.tsx` for global feedback.
+- **`hooks/`** – Reusable logic extracted as React hooks, such as `useToast.ts`.
+- **`types/`** – All TypeScript type declarations for API payloads and global store logic.
+- **`store/`** – Zustand store setup and related types.
+
+This layered structure enforces a clear separation of concerns, increases reusability, and ensures long-term scalability and maintainability.
+
+## 📌 Assumptions
+
+- Users simulate login by creating or entering an existing account ID (stored in global state).
+- Backend is always available at `http://localhost:8860`.
+- Currency formatting and precision are handled by the backend.
+- No authentication or authorization is required.
+- Account IDs must be positive numbers.
+- State is not persisted between sessions (by design).
+
+
+## Getting Started
+
+### Prerequisites
+
+*   Node.js (v18 or later)
+*   npm or yarn
+
+### Setup and Running the Application
+
+1.  **Start the Backend Server:**
+    Start the backend server on port 8860: `http://localhost:8860`
+
+2.  **Install Frontend Dependencies:**
+    Clone the repository and navigate into the project directory. Then, install the necessary dependencies.
+    ```bash
+    git clone https://github.com/dontdude/Simple-Transfer.git
+    cd Simple-Transfer
+    npm install
+    ```
+
+3.  **Run the Frontend Application:**
+    Once dependencies are installed, start the development server.
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open in Browser:**
+    The application will be available at `http://localhost:5173` (or another port if 5173 is in use).
