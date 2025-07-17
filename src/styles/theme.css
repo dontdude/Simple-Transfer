@@ -64,6 +64,7 @@
 
   /* --- Breakpoints --- */
   --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
 
   /* --- Transitions --- */
   --transition-speed: 0.2s;
