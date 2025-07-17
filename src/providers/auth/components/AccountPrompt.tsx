@@ -4,6 +4,7 @@ import { useAccountStore } from "../../../store/account.store";
 import { Card } from "../../../components/Card/Card";
 import { Button } from "../../../components/Button/Button";
 import { Input } from "../../../components/Input/Input";
+import { FormError } from "../../../components/FormError/FormError";
 import styles from "./AccountPrompt.module.css";
 
 export const AccountPrompt = () => {
@@ -40,7 +41,7 @@ export const AccountPrompt = () => {
                 placeholder="e.g., 12345"
                 error={!!error}
               />
-              {error && <p className="error-message">{error}</p>}
+              <FormError message={error} />
               <Button type="submit">Use This Account</Button>
             </form>
           </div>

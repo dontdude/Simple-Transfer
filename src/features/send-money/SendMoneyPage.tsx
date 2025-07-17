@@ -5,6 +5,7 @@ import { Button } from "../../components/Button/Button";
 import { Card } from "../../components/Card/Card";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { RequireAccount } from "../../providers/auth/RequireAccount";
+import { FormError } from "../../components/FormError/FormError";
 import styles from "./SendMoneyPage.module.css";
 
 export const SendMoneyPage = () => {
@@ -41,9 +42,7 @@ export const SendMoneyPage = () => {
               required
               error={!!errors.destinationAccountId}
             />
-            {errors.destinationAccountId && (
-              <p className="error-message">{errors.destinationAccountId}</p>
-            )}
+            <FormError message={errors.destinationAccountId} />
 
             <Input
               label="Amount to Send ($)"
@@ -55,7 +54,7 @@ export const SendMoneyPage = () => {
               required
               error={!!errors.amount}
             />
-            {errors.amount && <p className="error-message">{errors.amount}</p>}
+            <FormError message={errors.amount} />
 
             <div className={styles.formActions}>
               <Button type="submit" disabled={isLoading}>
