@@ -45,4 +45,11 @@
   --z-index-modal-backdrop: 30;
   --z-index-modal: 40;
   --z-index-toast: 50;
+
+  /* --- Layout Dimensions --- */
+  --max-width-container: 1140px;
+  --navbar-height: 64px; /* New */
+
+  /* --- Transitions --- */
+  --transition-speed: 0.2s; /* New */
 }

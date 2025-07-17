@@ -1,8 +1,15 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AppLayout } from "./layout/AppLayout/AppLayout";
+
 function App() {
   return (
-    <div className="container">
-      <h1>Hello world</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          hello world
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
