@@ -16,7 +16,7 @@ export const ViewBalancePage = () => {
 
     if (error) {
       return (
-        <div className={styles.centeredMessage}>
+        <div className={styles.centeredMessage} role="alert">
           <p className="error-message">{error}</p>
           <Button onClick={fetchBalance} disabled={isLoading}>
             Retry

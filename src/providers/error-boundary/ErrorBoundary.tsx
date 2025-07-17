@@ -32,7 +32,7 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className={styles.container}>
+        <div className={styles.container} role="alert">
           <h1 className={styles.title}>Something went wrong</h1>
           <p className={styles.message}>
             We're sorry for the inconvenience. Please return to the homepage to

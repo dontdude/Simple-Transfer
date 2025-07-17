@@ -31,7 +31,11 @@ export const SendMoneyPage = () => {
         </header>
 
         <Card>
-          <form onSubmit={handleSubmit} className={styles.form}>
+          <form
+            onSubmit={handleSubmit}
+            className={styles.form}
+            autoComplete="off"
+          >
             <Input
               label="Destination Account ID"
               name="destinationAccountId"
@@ -47,7 +51,7 @@ export const SendMoneyPage = () => {
             <Input
               label="Amount to Send ($)"
               name="amount"
-              type="number"
+              type="text"
               value={formData.amount}
               onChange={handleChange}
               placeholder="e.g., 50.00"
@@ -68,15 +72,15 @@ export const SendMoneyPage = () => {
           <div className={styles.summaryContainer}>
             <h2 className={styles.summaryTitle}>Transaction Successful</h2>
             <Card>
-              <div className={styles.summaryRow}>
+              <div key="source" className={styles.summaryRow}>
                 <span>From Account:</span>
                 <span>{lastTransaction.source_account_id}</span>
               </div>
-              <div className={styles.summaryRow}>
+              <div key="destination" className={styles.summaryRow}>
                 <span>To Account:</span>
                 <span>{lastTransaction.destination_account_id}</span>
               </div>
-              <div className={styles.summaryRow}>
+              <div key="amount" className={styles.summaryRow}>
                 <span>Amount Sent:</span>
                 <span className={styles.summaryAmount}>
                   {formatCurrency(lastTransaction.amount)}

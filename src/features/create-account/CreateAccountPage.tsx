@@ -18,7 +18,11 @@ export const CreateAccountPage = () => {
       </header>
 
       <Card>
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <form
+          onSubmit={handleSubmit}
+          className={styles.form}
+          autoComplete="off"
+        >
           <Input
             label="Account ID"
             name="accountId"
@@ -34,7 +38,7 @@ export const CreateAccountPage = () => {
           <Input
             label="Initial Balance ($)"
             name="initialBalance"
-            type="number"
+            type="text"
             value={formData.initialBalance}
             onChange={handleChange}
             placeholder="e.g., 1000.00"
