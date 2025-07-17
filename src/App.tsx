@@ -3,6 +3,7 @@ import { AppLayout } from "./layout/AppLayout/AppLayout";
 import { CreateAccountPage } from "./features/create-account/CreateAccountPage";
 import { ViewBalancePage } from "./features/view-balance/ViewBalancePage";
 import { SendMoneyPage } from "./features/send-money/SendMoneyPage";
+import { NotFoundPage } from "./features/not-found/NotFoundPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route index element={<CreateAccountPage />} />
           <Route path="balance" element={<ViewBalancePage />} />
           <Route path="transfer" element={<SendMoneyPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
