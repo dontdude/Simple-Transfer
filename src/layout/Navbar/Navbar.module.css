@@ -12,9 +12,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   max-width: var(--max-width-container);
   margin: 0 auto;
-  height: var(--navbar-height);
+  min-height: var(--navbar-height);
 }
 
 .brand {
@@ -22,13 +23,14 @@
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
   text-decoration: none;
+  padding: var(--spacing-4) 0;
 }
 
 .navList {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: var(--spacing-6);
+  gap: var(--spacing-4);
 }
 
 .navItem {
@@ -36,21 +38,55 @@
 }
 
 .navLink {
+  display: block;
   color: var(--color-text-secondary);
   text-decoration: none;
   font-weight: var(--font-weight-bold);
-  padding: var(--spacing-2) 0;
-  border-bottom: 2px solid transparent;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--border-radius-md);
+  position: relative;
   transition:
     color var(--transition-speed) ease,
-    border-color var(--transition-speed) ease;
+    background-color var(--transition-speed) ease;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  left: var(--spacing-4);
+  right: var(--spacing-4);
+  height: 2px;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-speed) ease-in-out;
 }
 
 .navLink:hover {
   color: var(--color-text-primary);
+  background-color: var(--color-background);
 }
 
-.activeLink {
-  color: var(--color-primary) !important;
-  border-bottom-color: var(--color-primary);
+.navLink.activeLink {
+  color: var(--color-primary);
+}
+
+.navLink.activeLink::after {
+  transform: scaleX(1);
+}
+
+/* --- Responsive Styles --- */
+@media (max-width: 768px) {
+  .navContainer {
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-2) 0;
+    gap: var(--spacing-2);
+  }
+
+  .navList {
+    width: 100%;
+    justify-content: center;
+    gap: var(--spacing-2);
+  }
 }
