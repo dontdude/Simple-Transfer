@@ -6,7 +6,7 @@ export const Toast = () => {
       position="top-right"
       reverseOrder={false}
       toastOptions={{
-        duration: 3000,
+        duration: 4000,
         style: {
           background: "var(--color-surface)",
           color: "var(--color-text-primary)",

@@ -19,7 +19,7 @@ body {
 }
 
 *:focus-visible {
-  outline: 3px solid var(--color-focus-outline);
+  outline: var(--border-width-md) solid var(--color-focus-outline);
   outline-offset: 2px;
   border-radius: var(--border-radius-sm);
 }
@@ -31,7 +31,8 @@ body {
 
 .error-message {
   color: var(--color-error);
-  font-size: 0.875em;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
   margin-top: var(--spacing-2);
 }
 
@@ -44,7 +45,7 @@ body {
   padding-right: var(--spacing-6);
 }
 
-@media (max-width: 600px) {
+@media (max-width: var(--breakpoint-sm)) {
   body {
     font-size: var(--font-size-sm);
   }

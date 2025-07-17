@@ -46,7 +46,7 @@ export const SendMoneyPage = () => {
             )}
 
             <Input
-              label="Amount to Send"
+              label="Amount to Send ($)"
               name="amount"
               type="number"
               value={formData.amount}

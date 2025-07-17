@@ -33,12 +33,12 @@ export const CreateAccountPage = () => {
           )}
 
           <Input
-            label="Initial Balance"
+            label="Initial Balance ($)"
             name="initialBalance"
             type="number"
             value={formData.initialBalance}
             onChange={handleChange}
-            placeholder="e.g., 1000.00"
+            placeholder="e.g., i1000.00"
             required
             error={!!errors.initialBalance}
           />

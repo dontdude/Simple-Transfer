@@ -23,7 +23,7 @@ export const useBalance = () => {
             const data = await getAccountBalance(accountId);
             setBalanceData(data);
         } catch (err) {
-            setError('Failed to fetch account balance.');
+            setError(`Failed to fetch account balance for account ID ${accountId}.`);
             let errorMessage = 'Unable to fetch balance. Please try again.';
 
             if (isAxiosError(err) && err.response?.data) {
