@@ -1,8 +1,4 @@
-import { useState } from "react";
-import { useAccountStore } from "../../store/account.store";
-import { sendMoney } from "../../api/transferService";
-import type { TransferResponse } from "../../types/api.types";
-import { showSuccess, showError } from "../../hooks/useToast";
+import { useSendMoneyForm } from "./useSendMoneyForm";
 import { formatCurrency } from "../../utils/formatters";
 import { Input } from "../../components/Input/Input";
 import { Button } from "../../components/Button/Button";
@@ -11,73 +7,16 @@ import { Spinner } from "../../components/Spinner/Spinner";
 import { RequireAccount } from "../../providers/auth/RequireAccount";
 import styles from "./SendMoneyPage.module.css";
 
-const initialState = {
-  destinationAccountId: "",
-  amount: "",
-};
-
 export const SendMoneyPage = () => {
-  const sourceAccountId = useAccountStore((state) => state.accountId);
-  const [formData, setFormData] = useState(initialState);
-  const [errors, setErrors] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
-  const [lastTransaction, setLastTransaction] =
-    useState<TransferResponse | null>(null);
-
-  const validateForm = () => {
-    const newErrors = { ...initialState };
-    let isValid = true;
-
-    if (!formData.destinationAccountId) {
-      newErrors.destinationAccountId = "Destination account ID is required.";
-      isValid = false;
-    } else if (Number(formData.destinationAccountId) === sourceAccountId) {
-      newErrors.destinationAccountId = "Cannot send money to the same account.";
-      isValid = false;
-    }
-
-    if (!formData.amount) {
-      newErrors.amount = "Amount is required.";
-      isValid = false;
-    } else if (isNaN(Number(formData.amount)) || Number(formData.amount) <= 0) {
-      newErrors.amount = "Amount must be a number greater than 0.";
-      isValid = false;
-    }
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (lastTransaction) setLastTransaction(null);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!validateForm() || !sourceAccountId) return;
-
-    setIsLoading(true);
-    setLastTransaction(null);
-    try {
-      const payload = {
-        source_account_id: sourceAccountId,
-        destination_account_id: Number(formData.destinationAccountId),
-        amount: formData.amount,
-      };
-
-      const response = await sendMoney(payload);
-      showSuccess("Transaction successful!");
-      setLastTransaction(response);
-      setFormData(initialState);
-    } catch (err) {
-      showError("Transaction failed. Please check details and try again.");
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const {
+    sourceAccountId,
+    formData,
+    errors,
+    isLoading,
+    lastTransaction,
+    handleChange,
+    handleSubmit,
+  } = useSendMoneyForm();
 
   return (
     <RequireAccount>

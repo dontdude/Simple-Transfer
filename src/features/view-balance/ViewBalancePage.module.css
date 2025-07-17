@@ -1,10 +1,13 @@
 .header {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: var(--spacing-8);
 }
 
 .header h1 {
   font-size: 2.5rem;
+  margin: 0;
 }
 
 .contentArea {
@@ -35,6 +38,7 @@
 
 .balanceLabel {
   font-size: 1rem;
+  margin-right: var(--spacing-8);
   color: var(--color-text-secondary);
 }
 
@@ -48,4 +52,16 @@
   font-weight: var(--font-weight-bold);
   font-size: 1.5rem;
   color: var(--color-success);
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-4);
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
 }

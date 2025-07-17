@@ -1,46 +1,13 @@
-import { useState, useEffect, useCallback } from "react";
-import { useAccountStore } from "../../store/account.store";
-import { getAccountBalance } from "../../api/transferService";
-import type { GetBalanceResponse } from "../../types/api.types";
-import { showError } from "../../hooks/useToast";
+import { useBalance } from "./useBalance";
 import { Card } from "../../components/Card/Card";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { Button } from "../../components/Button/Button";
-import { RequireAccount } from "../../providers/auth/RequireAccount"; // Import the guard
+import { RequireAccount } from "../../providers/auth/RequireAccount";
 import { BalanceDisplay } from "./components/BalanceDisplay";
 import styles from "./ViewBalancePage.module.css";
 
 export const ViewBalancePage = () => {
-  const accountId = useAccountStore((state) => state.accountId);
-  const [balanceData, setBalanceData] = useState<GetBalanceResponse | null>(
-    null
-  );
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const fetchBalance = useCallback(async () => {
-    if (!accountId) {
-      setIsLoading(false);
-      return;
-    }
-
-    setIsLoading(true);
-    setError(null);
-    try {
-      const data = await getAccountBalance(accountId);
-      setBalanceData(data);
-    } catch (err) {
-      setError("Failed to fetch account balance.");
-      showError("Unable to fetch balance. Please try again.");
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [accountId]);
-
-  useEffect(() => {
-    fetchBalance();
-  }, [fetchBalance]);
+  const { isLoading, error, balanceData, fetchBalance } = useBalance();
 
   const renderContent = () => {
     if (isLoading) {
@@ -77,6 +44,11 @@ export const ViewBalancePage = () => {
       <div className="container">
         <header className={styles.header}>
           <h1>Account Balance</h1>
+          {!isLoading && balanceData && (
+            <Button onClick={fetchBalance} disabled={isLoading}>
+              Refresh
+            </Button>
+          )}
         </header>
         <div className={styles.contentArea}>{renderContent()}</div>
       </div>
