@@ -61,7 +61,7 @@ export const useSendMoneyForm = () => {
             };
 
             const response = await sendMoney(payload);
-            showSuccess(`Transaction successful! Sent ${formData.amount} to account #${formData.destinationAccountId}.`);
+            showSuccess(`Transaction successful! Sent ${formData.amount} to account ${formData.destinationAccountId}.`);
             setLastTransaction(response || payload);
             setFormData(initialState);
         } catch (err) {
