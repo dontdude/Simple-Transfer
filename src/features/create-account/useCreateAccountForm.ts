@@ -58,7 +58,6 @@ export const useCreateAccountForm = () => {
             setFormData(initialState);
         } catch (err) {
             handleApiError(err, 'Failed to create account.');
-            console.error(err);
         } finally {
             setIsLoading(false);
         }

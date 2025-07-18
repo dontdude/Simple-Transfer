@@ -66,7 +66,6 @@ export const useSendMoneyForm = () => {
             setFormData(initialState);
         } catch (err) {
             handleApiError(err, "Transaction failed. Please check details and try again.");
-            console.error(err);
         } finally {
             setIsLoading(false);
         }

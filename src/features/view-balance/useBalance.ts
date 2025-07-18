@@ -24,7 +24,6 @@ export const useBalance = () => {
         } catch (err) {
             setError(`Failed to fetch account balance for account ID ${accountId}.`);
             handleApiError(err, 'Unable to fetch balance. Please try again.');
-            console.error(err);
         } finally {
             setIsLoading(false);
         }
